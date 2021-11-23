@@ -1,7 +1,18 @@
+<!DOCTYPE html>
 {% extends 'base.html' %}
+<link rel="stylesheet" href="/static/css/main.css">
 
 {% block content %}
-
-<h1>Hello, World!</h1>
+<html>
+    <h1>Hello, fellow Winkers!</h1>
+    <div class="container">
+        <p>Here you can add your winks</p>
+        <form>
+            <input type="text" id="title" placeholder="Title"><br>
+            <input type="text" id="url" placeholder="url"><br>
+            <input type="submit" value="Add">
+        </form>
+    </div>
+</html>
 
 {% endblock %}
