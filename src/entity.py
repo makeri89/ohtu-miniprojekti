@@ -1,16 +1,13 @@
-class Entity:
-    def __init__(self, title: str):
-        self.__title = title
+#temporary: move to proper modules!
+from app import app
+from flask_sqlalchemy import SQLAlchemy
+db = SQLAlchemy(app)
+#temporary: ends
 
-    @property
-    def get_title(self):
-        return self.__title
+class Weblink(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(200), nullable=False)
+    url = db.Column(db.String(500), nullable=False)
 
-class Weblink(Entity):
-    def __init__(self, title: str, url: str):
-        super().__init__(title)
-        self.__url = url
-
-    @property
-    def get_url(self):
-        return self.__url
+    def __repr__(self):
+        return f'{self.id}: {self.title} :: {self.url}'
