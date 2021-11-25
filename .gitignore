@@ -5,3 +5,4 @@ report.html
 selenium-screenshot*
 .coverage
 htmlcov/
+.pytest_cache
