@@ -27,4 +27,4 @@ jobs:
       - name: Coverage report to Codecov
         run: bash <(curl -s https://codecov.io/bash)
       - name: Lint
-        run: poetry run pylint pylint --load-plugins pylint_flask_sqlalchemy src 
+        run: poetry run pylint --load-plugins pylint_flask_sqlalchemy src 
