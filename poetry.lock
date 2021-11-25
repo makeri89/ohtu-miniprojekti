@@ -2,7 +2,7 @@
 name = "astroid"
 version = "2.8.6"
 description = "An abstract syntax tree for Python with inference support."
-category = "dev"
+category = "main"
 optional = false
 python-versions = "~=3.6"
 
@@ -189,7 +189,7 @@ python-versions = "*"
 name = "isort"
 version = "5.10.1"
 description = "A Python utility / library to sort Python imports."
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.6.1,<4.0"
 
@@ -225,7 +225,7 @@ i18n = ["Babel (>=2.7)"]
 name = "lazy-object-proxy"
 version = "1.6.0"
 description = "A fast and thorough lazy object proxy."
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*"
 
@@ -241,7 +241,7 @@ python-versions = ">=3.6"
 name = "mccabe"
 version = "0.6.1"
 description = "McCabe checker, plugin for flake8"
-category = "dev"
+category = "main"
 optional = false
 python-versions = "*"
 
@@ -271,7 +271,7 @@ pyparsing = ">=2.0.2,<3.0.5 || >3.0.5"
 name = "platformdirs"
 version = "2.4.0"
 description = "A small Python module for determining appropriate platform-specific dirs, e.g. a \"user data dir\"."
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.6"
 
@@ -311,7 +311,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 name = "pylint"
 version = "2.11.1"
 description = "python code static checker"
-category = "dev"
+category = "main"
 optional = false
 python-versions = "~=3.6"
 
@@ -323,6 +323,43 @@ mccabe = ">=0.6,<0.7"
 platformdirs = ">=2.2.0"
 toml = ">=0.7.1"
 typing-extensions = {version = ">=3.10.0", markers = "python_version < \"3.10\""}
+
+[[package]]
+name = "pylint-flask"
+version = "0.6"
+description = "pylint-flask is a Pylint plugin to aid Pylint in recognizing and understanding errors caused when using Flask"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+pylint-plugin-utils = ">=0.2.1"
+
+[[package]]
+name = "pylint-flask-sqlalchemy"
+version = "0.2.0"
+description = "A Pylint plugin for improving code analysis when editing code using Flask-SQLAlchemy"
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
+[package.dependencies]
+Flask-SQLAlchemy = ">=2"
+pylint = "*"
+
+[package.extras]
+dev = ["black", "bump2version", "gitchangelog", "pystache", "mypy"]
+
+[[package]]
+name = "pylint-plugin-utils"
+version = "0.6"
+description = "Utilities and helpers for writing Pylint plugins"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+pylint = ">=1.7"
 
 [[package]]
 name = "pyopenssl"
@@ -474,7 +511,7 @@ sqlcipher = ["sqlcipher3-binary"]
 name = "toml"
 version = "0.10.2"
 description = "Python Library for Tom's Obvious, Minimal Language"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
 
@@ -512,7 +549,7 @@ wsproto = ">=0.14"
 name = "typing-extensions"
 version = "4.0.0"
 description = "Backported and Experimental Type Hints for Python 3.6+"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.6"
 
@@ -550,7 +587,7 @@ watchdog = ["watchdog"]
 name = "wrapt"
 version = "1.13.3"
 description = "Module for decorators, wrappers and monkey patching."
-category = "dev"
+category = "main"
 optional = false
 python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
 
@@ -568,7 +605,7 @@ h11 = ">=0.9.0,<1"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "f6e8a8ab151838ed6d24e2304ff15589944fe81d1974e9c6f0c6a133c25510ca"
+content-hash = "965cfd525ec60885665cae34a1ea01dce25bdc67cf7d89faffc47bea2e794136"
 
 [metadata.files]
 astroid = [
@@ -936,6 +973,17 @@ pycparser = [
 pylint = [
     {file = "pylint-2.11.1-py3-none-any.whl", hash = "sha256:0f358e221c45cbd4dad2a1e4b883e75d28acdcccd29d40c76eb72b307269b126"},
     {file = "pylint-2.11.1.tar.gz", hash = "sha256:2c9843fff1a88ca0ad98a256806c82c5a8f86086e7ccbdb93297d86c3f90c436"},
+]
+pylint-flask = [
+    {file = "pylint-flask-0.6.tar.gz", hash = "sha256:f4d97de2216bf7bfce07c9c08b166e978fe9f2725de2a50a9845a97de7e31517"},
+]
+pylint-flask-sqlalchemy = [
+    {file = "pylint_flask_sqlalchemy-0.2.0-py3-none-any.whl", hash = "sha256:27f1fffb940adc9ac8f00ff7eb91ec39ca070c0f3bcec0d7f1c702a993d40505"},
+    {file = "pylint_flask_sqlalchemy-0.2.0.tar.gz", hash = "sha256:8ede5baba1a465d8ba39d8383ffcf0889d7a6afeff44bd24177fcf529ba8aa81"},
+]
+pylint-plugin-utils = [
+    {file = "pylint-plugin-utils-0.6.tar.gz", hash = "sha256:57625dcca20140f43731311cd8fd879318bf45a8b0fd17020717a8781714a25a"},
+    {file = "pylint_plugin_utils-0.6-py3-none-any.whl", hash = "sha256:2f30510e1c46edf268d3a195b2849bd98a1b9433229bb2ba63b8d776e1fc4d0a"},
 ]
 pyopenssl = [
     {file = "pyOpenSSL-21.0.0-py2.py3-none-any.whl", hash = "sha256:8935bd4920ab9abfebb07c41a4f58296407ed77f04bd1a92914044b848ba1ed6"},
