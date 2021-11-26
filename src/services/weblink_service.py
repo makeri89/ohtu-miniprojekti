@@ -12,4 +12,8 @@ class WeblinkService:
 
     def get_weblinks(self):
         return self._repository.find_all()
+
+    #placeholder before flask_testing is operational
+    def create_weblink_for_testing(self, title, url):
+        return Weblink(title, url)
     
