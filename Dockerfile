@@ -1,16 +1,11 @@
-FROM ubuntu:20.04
+FROM python:3.8
 
 WORKDIR /usr/src/app
 
 COPY . .
 
-RUN apt update && apt install -y curl python3 python3.8-venv python3-pip
+RUN apt update && \
+    pip install poetry && \
+    poetry install
 
-RUN pip install poetry
-
-RUN poetry install
-
-# RUN poetry run python3 src/index.py &
-
-# CMD ["poetry", "run", "python3", "src/index.py"]
-CMD ["bash"]
+CMD ["poetry", "run", "python3", "src/index.py"]

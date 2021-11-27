@@ -17,3 +17,4 @@ class WeblinkService:
     def create_weblink_for_testing(self, title, url):
         return Weblink(title, url)
     
+weblink_service = WeblinkService()

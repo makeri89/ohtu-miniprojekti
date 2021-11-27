@@ -1,9 +1,7 @@
 from flask import render_template
 
 from app import app
-from services.weblink_service import WeblinkService
-
-weblink_service = WeblinkService()
+from services.weblink_service import weblink_service
 
 @app.route('/')
 def hello_world():
@@ -13,5 +11,4 @@ def hello_world():
 @app.route('/weblinks', methods=['GET'])
 def weblinks():
     all_weblinks = weblink_service.get_weblinks()
-    print(all_weblinks)
-    return render_template('index.html')
+    return str(all_weblinks)

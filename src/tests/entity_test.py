@@ -1,7 +1,7 @@
 import unittest
 
 #placeholder import before flask_testing is operational
-from routes import weblink_service
+from services.weblink_service import weblink_service
 
 class TestWeblink(unittest.TestCase):
     def setUp(self):
