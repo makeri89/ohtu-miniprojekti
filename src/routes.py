@@ -1,7 +1,9 @@
 from flask import render_template
 
 from app import app
-from services.weblink_service import weblink_service
+from services.weblink_service import WeblinkService
+
+weblink_service = WeblinkService()
 
 @app.route('/')
 def hello_world():

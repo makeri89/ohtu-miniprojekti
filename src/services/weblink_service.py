@@ -16,5 +16,3 @@ class WeblinkService:
     #placeholder before flask_testing is operational
     def create_weblink_for_testing(self, title, url):
         return Weblink(title, url)
-    
-weblink_service = WeblinkService()
