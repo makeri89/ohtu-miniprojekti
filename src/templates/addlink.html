@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form action="/addlink" method="post">
+    Title: <input type="text" name="title">
+    </br>
+    Url: <input type="text" name="url">
+    </br>
+    <button type="submit">Submit</button>
+</form>
+
+{% endblock %}

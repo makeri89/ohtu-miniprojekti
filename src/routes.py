@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template, request
 
 from app import app
 from services.weblink_service import WeblinkService
@@ -14,3 +14,12 @@ def hello_world():
 def weblinks():
     all_weblinks = weblink_service.get_weblinks()
     return str(all_weblinks)
+
+@app.route('/addlink', methods=['GET', 'POST'])
+def addLink():
+    if request.method == 'POST':
+        title = request.form['title']
+        url = request.form['url']
+        weblink_service.add_weblink(title, url)  
+    
+    return render_template("addlink.html")
