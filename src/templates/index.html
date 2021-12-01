@@ -5,14 +5,17 @@
 {% block content %}
 <html>
     <h1>Hello, fellow Winkers!</h1>
-    <div class="container">
-        <p>Here you can add your winks</p>
-        <form>
-            <input type="text" id="title" placeholder="Title"><br>
-            <input type="text" id="url" placeholder="url"><br>
+    <p>Here you can add your winks</p>
+        <form action="/sendvink" method="post">
+            <input type="text" name="title" placeholder="Title" size="50"><br>
+            <input type="text" name="url" placeholder="url" size="50"><br>
             <input type="submit" value="Add">
         </form>
-    </div>
+        <ul>
+        {% for weblink in weblinks %}
+            <li>Title: {{ weblink.title }} <br> URL: {{ weblink.url }}</li>
+        {% endfor %}
+        </ul>    
 </html>
 
 {% endblock %}
