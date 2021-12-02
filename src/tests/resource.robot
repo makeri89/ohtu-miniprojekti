@@ -1,5 +1,6 @@
 *** Settings ***
 Library  SeleniumLibrary
+Library  ../AppLibrary.py
 
 *** Variables ***
 ${SERVER}  localhost:5000
@@ -13,6 +14,10 @@ Configure Browser
 
 Go To Home Page
     Go To  ${HOME URL}
+
+Home Page Should Be Open
+    Title Should Be  WinkVink
+    Page Should Contain  Hello, fellow Winkers!
 
 Open Browser Before Configuration
     Open Browser  browser=${BROWSER}

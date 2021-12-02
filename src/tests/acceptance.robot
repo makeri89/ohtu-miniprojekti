@@ -9,25 +9,27 @@ User Can Add Weblink To Collection
     Set Weblink Title  test_title
     Set Weblink Url  http://example.com/
     Submit Weblink
-    Weblink Should Be Submitted  test_title
+    Weblink Should Be Displayed On Reload  test_title
+
+All Weblinks Are Fetched From Database Then Displayed
+    Add Weblink To Database  weblink_name1  http://example1.com 
+    Add Weblink To Database  weblink_name2  http://example2.com 
+    Weblink Should Be Displayed On Reload  weblink_name1
+    Weblink Should Be Displayed On Reload  weblink_name2
 
 *** Keywords ***
-Home Page Should Be Open
-    Title Should Be  WinkVink
-    Page Should Contain  #something
-
 Set Weblink Title
     [Arguments]  ${weblink_title}
-    Input Title  id:#something  ${weblink_title}
+    Input Text  name:title  ${weblink_title}
 
 Set Weblink Url
     [Arguments]  ${weblink_url}
-    Input Url  id:#something  ${weblink_url}
+    Input Text  name:url  ${weblink_url}
 
 Submit Weblink
-    Click Button  #something
+    Click Button  Add
 
-Weblink Should Be Submitted
+Weblink Should Be Displayed On Reload
     [Arguments]  ${weblink_title}
     Go To Home Page
     Page Should Contain  ${weblink_title}
