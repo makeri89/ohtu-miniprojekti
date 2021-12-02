@@ -1,7 +1,7 @@
-import index
 import unittest
 
-#placeholder import before flask_testing is operational
+#placeholder imports before flask_testing is operational
+import index
 from routes import weblink_service
 
 class TestWeblink(unittest.TestCase):
