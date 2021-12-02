@@ -1,5 +1,5 @@
-from database import db
-from entities.weblink import Weblink
+from src.database import db
+from src.entities.weblink import Weblink
 
 class WeblinkRepository:
     def __init__(self):

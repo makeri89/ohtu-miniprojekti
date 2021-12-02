@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect
 
-from app import app
-from services.weblink_service import WeblinkService
+from src.app import app
+from src.services.weblink_service import WeblinkService
 
 weblink_service = WeblinkService()
 
