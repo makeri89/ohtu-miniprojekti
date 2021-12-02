@@ -10,4 +10,9 @@
 
 ## Definition of done
 
-- tänne dod
+* Yksikkötestit on toteutettu
+* Testauskattavuus yli 70%
+* User storyille on määritelty [hyväksymiskriteerit](https://docs.google.com/spreadsheets/d/10BG6b7f_LPVzOpk1eU0c9R7P48uT8tVwpTmLE4rrM38/edit?usp=sharing)
+* Hyväksymistestaus toteutettu Robot-frameworkilla
+* Koodin ja testien tilanteen pääsee näkemään CI-palvelusta
+* Koodityyli noudattaa pylintin avulla määriteltyjä sääntöjä
