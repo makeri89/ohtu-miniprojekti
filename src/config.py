@@ -8,6 +8,8 @@ try:
 except:
     pass
 
-DATABASE_URL = os.getenv('DATABASE_URL').replace('postgres://', 'postgresql://', 1)
+DATABASE_URL = os.getenv('DATABASE_URL')
+if DATABASE_URL:
+    DATABASE_URL = DATABASE_URL.replace('postgres://', 'postgresql://', 1)
 PORT = os.getenv('PORT')
 HOST = os.getenv('HOST')
