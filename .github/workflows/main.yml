@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: poetry install
       - name: Run server
-        run: poetry run python3 src/index.py
+        run: poetry run python3 src/index.py &
       - name: Run tests
         run: poetry run coverage run --branch -m pytest
       - name: Coverage report
