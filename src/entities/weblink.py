@@ -1,4 +1,4 @@
-from src.database import db
+from database import db
 
 class Weblink(db.Model):
     id = db.Column(db.Integer, primary_key=True)
