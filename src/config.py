@@ -8,4 +8,4 @@ try:
 except:
     pass
 
-DATABASE_URL = os.getenv('DATABASE_URL')
+DATABASE_URL = os.getenv('DATABASE_URL').replace('://', 'ql://', 1)
