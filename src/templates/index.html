@@ -1,7 +1,21 @@
+<!DOCTYPE html>
 {% extends 'base.html' %}
+<link rel="stylesheet" href="/static/css/main.css">
 
 {% block content %}
-
-<h1>Hello, World!</h1>
+<html>
+    <h1>Hello, fellow Winkers!</h1>
+    <p>Here you can add your winks</p>
+        <form action="/sendvink" method="post">
+            <input type="text" name="title" placeholder="Title" size="50"><br>
+            <input type="text" name="url" placeholder="url" size="50"><br>
+            <input type="submit" value="Add">
+        </form>
+        <ul>
+        {% for weblink in weblinks %}
+            <li>Title: {{ weblink.title }} <br> URL: {{ weblink.url }}</li>
+        {% endfor %}
+        </ul>    
+</html>
 
 {% endblock %}
