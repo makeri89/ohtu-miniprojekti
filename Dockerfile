@@ -1,4 +1,4 @@
-FROM python:3.8
+FROM python:3.8.12
 
 WORKDIR /usr/src/app
 
@@ -8,4 +8,4 @@ RUN apt update && \
     pip install poetry && \
     poetry install
 
-CMD ["poetry", "run", "python3", "src/index.py"]
+CMD ["poetry", "run", "python3", "index.py"]

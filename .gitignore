@@ -6,3 +6,4 @@ selenium-screenshot*
 .coverage
 htmlcov/
 .pytest_cache
+.env
