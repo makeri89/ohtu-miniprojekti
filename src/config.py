@@ -10,3 +10,4 @@ except:
 
 DATABASE_URL = os.getenv('DATABASE_URL').replace('postgres://', 'postgresql://', 1)
 PORT = os.getenv('PORT')
+HOST = os.getenv('HOST')
