@@ -1,1 +1,1 @@
-web: gunicorn src.index:app
+web: python3 src/index.py
