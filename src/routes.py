@@ -6,13 +6,29 @@ from services.weblink_service import WeblinkService
 weblink_service = WeblinkService()
 
 @app.route('/', methods=['GET'])
-def hello_world():
-    list_vinks = weblink_service.get_weblinks()
-    return render_template('index.html', weblinks=list_vinks)
+def index():
+    weblinks = weblink_service.get_weblinks()
+    return render_template('index.html', weblinks=weblinks)
 
-@app.route('/sendvink', methods=['POST'])
-def send_vink():
-    vink_title = request.form['title']
-    vink_url = request.form['url']
-    weblink_service.add_weblink(vink_title, vink_url)
-    return redirect('/')
+@app.route('/weblinks', methods=['GET', 'POST'])
+def weblinks():
+    if request.method == 'GET':
+        weblinks = weblink_service.get_weblinks()
+        return render_template('index.html', weblinks=weblinks)
+    if request.method == 'POST':
+        weblink_title = request.form['title']
+        weblink_url = request.form['url']
+        weblink_service.add_weblink(weblink_title, weblink_url)
+        return redirect('/weblinks')
+    
+@app.route('/podcasts', methods=['GET', 'POST'])
+def podcasts():
+    if request.method == 'GET':
+        podcasts = None
+        return render_template('index.html', podcasts=podcasts)
+    
+@app.route('/books', methods=['GET', 'POST'])
+def books():
+    if request.method == 'GET':
+        books = None
+        return render_template('index.html', books=books)

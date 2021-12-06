@@ -6,4 +6,4 @@ class AppLibrary:
             "title": title,
             "url": url
         }
-        requests.post("http://localhost:5000/sendvink", data=weblink_data)
+        requests.post("http://localhost:5000/weblinks", data=weblink_data)
