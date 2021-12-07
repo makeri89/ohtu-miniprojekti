@@ -13,4 +13,12 @@
 {% endfor %}
 </ul>
 
+<ul>
+{% for podcast in podcasts %}
+    <li>Title: {{ podcast.title }} </li> 
+    <li>Name: {{ podcast.name }} </li> 
+    <li>Description: {{ podcast.description }} </li> 
+{% endfor %}
+</ul>
+
 {% endblock %}

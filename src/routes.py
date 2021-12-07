@@ -2,8 +2,10 @@ from flask import render_template, request, redirect
 
 from app import app
 from services.weblink_service import WeblinkService
+from services.podcast_service import PodcastService
 
 weblink_service = WeblinkService()
+podcast_service = PodcastService()
 
 @app.route('/', methods=['GET'])
 def index():
@@ -24,8 +26,14 @@ def weblinks():
 @app.route('/podcasts', methods=['GET', 'POST'])
 def podcasts():
     if request.method == 'GET':
-        all_podcasts = None
+        all_podcasts = podcast_service.get_podcasts()
         return render_template('index.html', podcasts=all_podcasts)
+    if request.method == 'POST':
+        podcast_description = request.form['description']
+        podcast_title = request.form['title']
+        podcast_name = request.form['name']
+        podcast_service.add_podcast(podcast_description, podcast_title, podcast_name )
+        return redirect('/podcasts')
 
 @app.route('/books', methods=['GET', 'POST'])
 def books():
