@@ -6,12 +6,16 @@ Library  ../AppLibrary.py
 ${SERVER}  localhost:5000
 ${BROWSER}  chrome
 ${DELAY}  0.5 seconds
+${BOOKS URL}  http://${SERVER}/books
 ${HOME URL}  http://${SERVER}
 ${WEBLINKS URL}  http://${SERVER}/weblinks
 
 *** Keywords ***
 Configure Browser
     Set Selenium Speed  ${DELAY}
+
+Go To Books Page
+    Go To  ${BOOKS URL}
 
 Go To Home Page
     Go To  ${HOME URL}
@@ -29,3 +33,6 @@ Open Browser Before Configuration
 Prepare Browser
     Open Browser Before Configuration
     Configure Browser
+
+Submit New WinkVink
+    Click Button  Add

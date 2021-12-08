@@ -12,3 +12,7 @@ class BookService:
 
     def get_books(self):
         return self._repository.find_all()
+
+    #placeholder before flask_testing is operational
+    def create_book_for_testing(self, title, author, year):
+        return Book(title, author, year)

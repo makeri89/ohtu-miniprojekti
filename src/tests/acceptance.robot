@@ -18,7 +18,33 @@ All Weblinks Are Fetched From Database Then Displayed
     Weblink Should Be Displayed On Reload  weblink_name1
     Weblink Should Be Displayed On Reload  weblink_name2
 
+User Can Add Book To Collection
+    Go To Books Page
+    Set Book Title  Robot Acceptance Test Book
+    Set Book Author  Robot I. Acceptance
+    Set Book Year  2021
+    Submit Book
+    Book Should Be Displayed On Reload  Robot Acceptance Test Book
+
+All Books Are Fetched From Database Then Displayed
+    Add Book To Database  First Book Added  Firstly Authored  2020
+    Add Book To Database  Second Book Added  Secondly Authored  2021
+    Book Should Be Displayed On Reload  First Book Added
+    Book Should Be Displayed On Reload  Second Book Added
+
 *** Keywords ***
+Set Book Author
+    [Arguments]  ${book_author}
+    Input Text  id:author  ${book_author}
+
+Set Book Title
+    [Arguments]  ${book_title}
+    Input Text  id:title  ${book_title}
+
+Set Book Year
+    [Arguments]  ${book_year}
+    Input Text  id:year  ${book_year}
+
 Set Weblink Title
     [Arguments]  ${weblink_title}
     Input Text  name:title  ${weblink_title}
@@ -27,8 +53,16 @@ Set Weblink Url
     [Arguments]  ${weblink_url}
     Input Text  name:url  ${weblink_url}
 
+Submit Book
+    Submit New WinkVink
+
 Submit Weblink
-    Click Button  Add
+    Submit New WinkVink
+
+Book Should Be Displayed On Reload
+    [Arguments]  ${book_title}
+    Go To Books Page
+    Page Should Contain  ${book_title}
 
 Weblink Should Be Displayed On Reload
     [Arguments]  ${weblink_title}
