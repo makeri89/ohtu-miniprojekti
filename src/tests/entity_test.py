@@ -1,36 +1,55 @@
-import unittest
+from database import db
+from flask import Flask
+from flask_testing import TestCase
+from flask_sqlalchemy import SQLAlchemy
+from entities.weblink import Weblink
+from entities.book import Book
 
-#placeholder imports before flask_testing is operational
-import index
-from routes import weblink_service, book_service
+class TestEntities(TestCase):
+    def create_app(self):
+        app = Flask(__name__)
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://'
+        app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+        app.config['TESTING'] = True
+        
+        #SQLAlchemy has to be initialized as below,
+        #even though we utilize DB as set in database module
+        #(from database import db)
+        SQLAlchemy(app)
+        
+        return app
 
-class TestWeblink(unittest.TestCase):
     def setUp(self):
-        #creates tables in the database for tests
-        index.db.create_all()        
+        db.create_all()
+
+    def tearDown(self):
+        db.session.remove()
+        db.drop_all()
 
     def test_weblink_has_name_and_url(self):
-        weblink_entity = weblink_service.create_weblink_for_testing(title='example', url='http://example.com')
-        self.assertEqual(weblink_entity.title, 'example')
+        weblink_entity = Weblink('Newly Created Weblink', 'http://example.com')
+        self.assertEqual(weblink_entity.title, 'Newly Created Weblink')
         self.assertEqual(weblink_entity.url, 'http://example.com')
 
     def test_weblink_holds_integrity_in_and_out_of_database(self):
-        weblink_service.add_weblink('example1', 'http://example1.com')
-        #change below to fetch only specific weblink
-        all_weblinks = weblink_service.get_weblinks()
-        self.assertEqual(all_weblinks[-1].title, 'example1')
-        self.assertEqual(all_weblinks[-1].url, 'http://example1.com')
+        db.session.add(Weblink('Weblink For Integrity Test', 'http://example.com'))
+        db.session.commit()
+        ##change below to fetch only specific weblink
+        all_weblinks = Weblink.query.all()
+        self.assertEqual(all_weblinks[-1].title, 'Weblink For Integrity Test')
+        self.assertEqual(all_weblinks[-1].url, 'http://example.com')
         
     def test_book_has_name_and_author(self):
-        book_entity = book_service.create_book_for_testing(title='Book Title For Testing', author='Book A. Uthor', year=2021)
+        book_entity = Book('Book Title For Testing', 'Book A. Uthor', 2021)
         self.assertEqual(book_entity.title, 'Book Title For Testing')
         self.assertEqual(book_entity.author, 'Book A. Uthor')
         self.assertNotEqual(book_entity.year, 2020)
 
     def test_book_holds_integrity_in_and_out_of_database(self):
-        book_service.add_book('Book Integrity Test', 'Named Author', 2021)
-        #change below to fetch only specific book
-        all_books = book_service.get_books()
-        self.assertEqual(all_books[-1].title, 'Book Integrity Test')
+        db.session.add(Book('Book For Integrity Test', 'Named Author', 2021))
+        db.session.commit()
+        ##change below to fetch only specific book
+        all_books = Book.query.all()
+        self.assertEqual(all_books[-1].title, 'Book For Integrity Test')
         self.assertNotEqual(all_books[-1].author, 'Someone Else')
         self.assertEqual(all_books[-1].year, 2021)
