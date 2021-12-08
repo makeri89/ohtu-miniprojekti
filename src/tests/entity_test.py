@@ -4,6 +4,7 @@ from flask_testing import TestCase
 from flask_sqlalchemy import SQLAlchemy
 from entities.weblink import Weblink
 from entities.book import Book
+from entities.podcast import Podcast
 
 class TestEntities(TestCase):
     def create_app(self):
@@ -53,3 +54,18 @@ class TestEntities(TestCase):
         self.assertEqual(all_books[-1].title, 'Book For Integrity Test')
         self.assertNotEqual(all_books[-1].author, 'Someone Else')
         self.assertEqual(all_books[-1].year, 2021)
+    
+    def test_podcast_has_title_name_and_description(self):
+        podcast_entity = Podcast('Podcast Title', 'Podcast Name', 'Podcast Description')
+        self.assertEqual(podcast_entity.title, 'Podcast Title')
+        self.assertEqual(podcast_entity.name, 'Podcast Name')
+        self.assertNotEqual(podcast_entity.description, 'Wrong Description')
+
+    def test_podcast_holds_integrity_in_and_out_of_database(self):
+        db.session.add(Podcast('Podcast For Integrity Test', 'Podcast Name', 'Podcast Description'))
+        db.session.commit()
+        all_podcasts = Podcast.query.all()
+        self.assertEqual(all_podcasts[-1].title, 'Podcast For Integrity Test')
+        self.assertNotEqual(all_podcasts[-1].name, 'Wrong name')
+        self.assertEqual(all_podcasts[-1].description, 'Podcast Description')
+

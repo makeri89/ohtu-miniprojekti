@@ -15,3 +15,11 @@ class AppLibrary:
             "year": year
         }
         requests.post("http://localhost:5000/books", data=book_data)
+
+    def add_podcast_to_database(self, title, name, description):
+        podcast_data = {
+            "title": title,
+            "name": name,
+            "description": description
+        }
+        requests.post("http://localhost:5000/books", data=podcast_data)

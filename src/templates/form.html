@@ -11,12 +11,16 @@
     {{ macros.input('url') }}
     <br>
   {% endif %}
-  {% if url == '/podcasts' or url == '/books' %}
-    <label for="author">Author</label>
-    {{ macros.input('author') }}
+  {% if url == '/podcasts' %}
+    <label for="name">Name</label>
+    {{ macros.input('name') }}
+    <label for="description">Description</label>
+    {{ macros.input('description') }}
     <br>
   {% endif %}
   {% if url == '/books' %}
+    <label for="author">Author</label>
+    {{ macros.input('author') }}
     <label for="year">Publication year</label>
     {{ macros.input('year') }}
     <br>

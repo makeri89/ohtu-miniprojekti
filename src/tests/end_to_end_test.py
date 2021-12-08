@@ -22,3 +22,12 @@ class TestEndToEnd(TestCase):
         self.assertTrue(results.text.__contains__('Committed Author'))
         self.assertTrue(results.text.__contains__('2021'))
         
+    def test_submitted_podcast_is_committed_to_database(self):
+        requests.post(f'http://localhost:{PORT}/podcasts', \
+            data={'title': 'Commit Podcast to Dabase', \
+                'name': 'Database Podcast',  \
+                'description': 'Podcast about committing data into a database'})
+        results = requests.get(f'http://localhost:{PORT}/podcasts')
+        self.assertFalse(results.text.__contains__('Podcast title'))
+        self.assertTrue(results.text.__contains__('Database Podcast'))
+        self.assertTrue(results.text.__contains__('Podcast about committing data into a database'))
