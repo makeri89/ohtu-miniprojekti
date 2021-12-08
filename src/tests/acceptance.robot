@@ -6,6 +6,7 @@ Test Setup  Go To Home Page
 
 *** Test Cases ***
 User Can Add Weblink To Collection
+    Go To Weblinks Page
     Set Weblink Title  test_title
     Set Weblink Url  http://example.com/
     Submit Weblink
@@ -31,5 +32,5 @@ Submit Weblink
 
 Weblink Should Be Displayed On Reload
     [Arguments]  ${weblink_title}
-    Go To Home Page
+    Go To Weblinks Page
     Page Should Contain  ${weblink_title}

@@ -7,6 +7,7 @@ ${SERVER}  localhost:5000
 ${BROWSER}  chrome
 ${DELAY}  0.5 seconds
 ${HOME URL}  http://${SERVER}
+${WEBLINKS URL}  http://${SERVER}/weblinks
 
 *** Keywords ***
 Configure Browser
@@ -14,6 +15,9 @@ Configure Browser
 
 Go To Home Page
     Go To  ${HOME URL}
+
+Go To Weblinks Page
+    Go To  ${WEBLINKS URL}
 
 Home Page Should Be Open
     Title Should Be  WinkVink

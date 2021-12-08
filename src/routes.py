@@ -2,8 +2,10 @@ from flask import render_template, request, redirect
 
 from app import app
 from services.weblink_service import WeblinkService
+from services.book_service import BookService
 
 weblink_service = WeblinkService()
+book_service = BookService()
 
 @app.route('/', methods=['GET'])
 def index():
@@ -30,5 +32,11 @@ def podcasts():
 @app.route('/books', methods=['GET', 'POST'])
 def books():
     if request.method == 'GET':
-        all_books = None
+        all_books = book_service.get_books()
         return render_template('index.html', books=all_books)
+    if request.method == 'POST':
+        book_title = request.form['title']
+        book_author = request.form['author']
+        book_year = request.form['year']
+        book_service.add_book(book_title, book_author, book_year)
+        return redirect('/books')
