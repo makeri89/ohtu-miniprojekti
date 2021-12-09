@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [robot_framework_ci]
+  pull_request:
+    branches: [robot_framework_ci]
+
+env:
+  PORT: 5000
+  HOST: 0.0.0.0
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Install Poetry
+        run: pip install poetry
+      - name: Install dependencies
+        run: poetry install
+      - name: Run server
+        run: poetry run python3 src/index.py &
+      - name: Run tests
+        run: poetry run coverage run --branch -m pytest
+      - name: Coverage report
+        run: poetry run coverage xml
+      - name: Coverage report to Codecov
+        run: bash <(curl -s https://codecov.io/bash)
+      - name: Lint
+        run: poetry run pylint src 
+      - name: Run Robot tests
+        run: bash run_robot_tests.sh
