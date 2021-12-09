@@ -28,8 +28,8 @@ Go To Podcasts Page
     Go To  ${PODCASTS URL}
 
 Home Page Should Be Open
-    Title Should Be  WinkVink
-    Page Should Contain  Hello, fellow Winkers!
+    Title Should Be  Front page - WinkVink
+    Page Should Contain  WinkVink
 
 Open Browser Before Configuration
     Open Browser  browser=${BROWSER}

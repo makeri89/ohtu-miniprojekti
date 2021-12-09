@@ -2,33 +2,34 @@
 
 {% set url = url_for(request.endpoint) %}
 
-<form action="{{ url }}" method="POST" id="input-form">
-  <label for="title">Title</label>
-  {{ macros.input('title') }}
-  <br>
-  {% if url == '/weblinks' or url == '/' %}
-    <label for="url">Url</label>
-    {{ macros.input('url') }}
+<section id="vink-form">
+  <h3>Add {{ url[1:] }}:</h3>
+  
+  <form action="{{ url }}" method="POST" id="input-form">
+    <label for="title">Title</label>
+    {{ macros.input('title') }}
     <br>
-  {% endif %}
-  {% if url == '/podcasts' %}
-    <label for="name">Name</label>
-    {{ macros.input('name') }}
-    <label for="description">Description</label>
-    {{ macros.input('description') }}
-    <br>
-  {% endif %}
-  {% if url == '/books' %}
-    <label for="author">Author</label>
-    {{ macros.input('author') }}
-    <label for="year">Publication year</label>
-    {{ macros.input('year') }}
-    <br>
-  {% endif %}
-  {% if url == '/podcasts' %}
-    <label for="description">Description</label>
-    {{ macros.input('description') }}
-    <br>
-  {% endif %}
-  <input type="submit" name="submit" id="submit" value="Add">
-</form>
+    {% if url == '/weblinks' or url == '/' %}
+      <label for="url">Url</label>
+      {{ macros.input('url') }}
+      <br>
+    {% endif %}
+    {% if url == '/podcasts' %}
+      <label for="name">Name</label>
+      {{ macros.input('name') }}
+      <br>
+      <label for="description">Description</label>
+      {{ macros.input('description') }}
+      <br>
+    {% endif %}
+    {% if url == '/books' %}
+      <label for="author">Author</label>
+      {{ macros.input('author') }}
+      <br>
+      <label for="year">Publication year</label>
+      {{ macros.input('year') }}
+      <br>
+    {% endif %}
+    <input type="submit" name="submit" id="submit" value="Add">
+  </form>
+</section>

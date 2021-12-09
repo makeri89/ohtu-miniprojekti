@@ -12,13 +12,16 @@ podcast_service = PodcastService()
 @app.route('/', methods=['GET'])
 def index():
     all_weblinks = weblink_service.get_weblinks()
-    return render_template('index.html', weblinks=all_weblinks)
+    all_books = book_service.get_books()
+    all_podcasts =podcast_service.get_podcasts()
+    return render_template('index.html', weblinks=all_weblinks,
+                           books=all_books,podcasts=all_podcasts)
 
 @app.route('/weblinks', methods=['GET', 'POST'])
 def weblinks():
     if request.method == 'GET':
         all_weblinks = weblink_service.get_weblinks()
-        return render_template('index.html', weblinks=all_weblinks)
+        return render_template('vinks.html', weblinks=all_weblinks)
     if request.method == 'POST':
         weblink_title = request.form['title']
         weblink_url = request.form['url']
@@ -29,7 +32,7 @@ def weblinks():
 def podcasts():
     if request.method == 'GET':
         all_podcasts = podcast_service.get_podcasts()
-        return render_template('index.html', podcasts=all_podcasts)
+        return render_template('vinks.html', podcasts=all_podcasts)
     if request.method == 'POST':
         podcast_title = request.form['title']
         podcast_name = request.form['name']
@@ -42,7 +45,7 @@ def podcasts():
 def books():
     if request.method == 'GET':
         all_books = book_service.get_books()
-        return render_template('index.html', books=all_books)
+        return render_template('vinks.html', books=all_books)
     if request.method == 'POST':
         book_title = request.form['title']
         book_author = request.form['author']

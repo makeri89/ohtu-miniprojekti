@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% set url = url_for(request.endpoint) %}
+
+{% block title %}{{ url[1:].capitalize() }}{% endblock %}
+
+{% block content %}
+
+{% include 'form.html' %}
+
+{% if url == '/weblinks' %}
+  {% include 'weblinks.html' %}
+{% elif url == '/books' %}
+  {% include 'books.html' %}
+{% elif url == '/podcasts' %}
+  {% include 'podcasts.html' %}
+{% endif %}
+
+{% endblock %}

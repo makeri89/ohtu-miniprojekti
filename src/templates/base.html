@@ -3,10 +3,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-  <title>{% block title %}WinkVink{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> 
+  <title>{% block title %}{% endblock %} - WinkVink</title>
 </head>
 <html>
   <body>
+    {% include 'header.html' %}
     <div>{% block content %}{% endblock %}</div>
     <script src={{ url_for('static', filename='script.js') }}></script>
   </body>

@@ -1,0 +1,11 @@
+<section class="vink-section" id="podcasts">
+  <h3><a href="/podcasts">Podcasts</a></h3>
+  
+  <ul>
+    {% for podcast in podcasts %}
+    <li>Title: {{ podcast.title }} <br> Name: {{ podcast.name }}
+    <br>
+    Description: {{ podcast.description }} </li>
+    {% endfor %}
+  </ul>
+</section>
