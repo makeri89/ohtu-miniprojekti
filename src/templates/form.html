@@ -2,7 +2,7 @@
 
 {% set url = url_for(request.endpoint) %}
 
-<form action="{{ url }}" method="POST">
+<form action="{{ url }}" method="POST" id="input-form">
   <label for="title">Title</label>
   {{ macros.input('title') }}
   <br>
@@ -23,6 +23,11 @@
     {{ macros.input('author') }}
     <label for="year">Publication year</label>
     {{ macros.input('year') }}
+    <br>
+  {% endif %}
+  {% if url == '/podcasts' %}
+    <label for="description">Description</label>
+    {{ macros.input('description') }}
     <br>
   {% endif %}
   <input type="submit" name="submit" id="submit" value="Add">
