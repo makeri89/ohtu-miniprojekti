@@ -1,9 +1,12 @@
-<section class='vink-section' id='books'>
+<section class="vink-section" id="books">
   <h3><a href="/books">Books</a></h3>
   
-  <ul>
+  <ul class="vink-list" id="book-list">
     {% for book in books %}
-      <li>Author: {{ book.author }} <br> Title: {{ book.title}} ({{ book.year }})</li>
+      <li class='vink book'>
+        <strong>Author:</strong> {{ book.author }}
+        <br> 
+        <strong>Title:</strong> {{ book.title}} ({{ book.year }})</li>
     {% endfor %}
   </ul>
 </section>

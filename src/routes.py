@@ -28,6 +28,11 @@ def weblinks():
         weblink_service.add_weblink(weblink_title, weblink_url)
         return redirect('/weblinks')
 
+@app.route('/weblinks/<int:id>', methods=['GET', 'DELETE'])
+def remove_weblink(id):
+    weblink_service.delete_weblink(id)
+    return redirect('/weblinks')
+
 @app.route('/podcasts', methods=['GET', 'POST'])
 def podcasts():
     if request.method == 'GET':
