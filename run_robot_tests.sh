@@ -7,7 +7,7 @@ done
 poetry run robot src/tests
 
 function clean_up {
-  kill $(lsof -t -i:6000)
+  kill $(lsof -t -i:5000)
 }
 
 trap clean_up EXIT
