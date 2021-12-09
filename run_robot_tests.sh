@@ -2,7 +2,7 @@
 
 poetry run python3 src/index.py &
 
-while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' localhost:5000/ping)" != "200" ]]; 
+while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' localhost:5000/)" != "200" ]]; 
   do sleep 1; 
 done
 
