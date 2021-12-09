@@ -18,3 +18,5 @@
 * Koodityyli noudattaa pylintin avulla määriteltyjä sääntöjä
 
 _This project is licensed under the terms of the MIT license._
+
+
