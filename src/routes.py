@@ -57,3 +57,7 @@ def books():
         book_year = request.form['year']
         book_service.add_book(book_title, book_author, book_year)
         return redirect('/books')
+
+@app.route("/ping", methods=['GET'])
+def ping():
+    return "pong"
