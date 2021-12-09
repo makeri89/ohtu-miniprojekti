@@ -22,4 +22,4 @@ class AppLibrary:
             "name": name,
             "description": description
         }
-        requests.post("http://localhost:5000/books", data=podcast_data)
+        requests.post("http://localhost:5000/podcasts", data=podcast_data)
