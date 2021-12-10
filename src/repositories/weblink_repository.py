@@ -1,9 +1,8 @@
 from database import db
 from entities.weblink import Weblink
-from routes import weblinks
 
 class WeblinkRepository:
-    def __init__(self):
+    def __init__(self): 
         pass
 
     def find_all(self):
@@ -14,7 +13,8 @@ class WeblinkRepository:
         db.session.commit()
 
     def delete(self, id):
-        db.session.query(Weblink).filter(Weblink.id==id).delete()
+        deleted_link = Weblink.query.get(id)
+        db.session.delete(deleted_link)
         db.session.commit()    
 
 weblink_repository = WeblinkRepository()

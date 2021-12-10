@@ -5,6 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from entities.weblink import Weblink
 from entities.book import Book
 from entities.podcast import Podcast
+from services.weblink_service import WeblinkService
 
 class TestEntities(TestCase):
     def create_app(self):
@@ -39,6 +40,14 @@ class TestEntities(TestCase):
         all_weblinks = Weblink.query.all()
         self.assertEqual(all_weblinks[-1].title, 'Weblink For Integrity Test')
         self.assertEqual(all_weblinks[-1].url, 'http://example.com')
+
+    def test_delete_weblink_from_database(self):
+        weblink = Weblink('Weblink For Integrity Test', 'http://example.com')
+        db.session.add(weblink)
+        db.session.commit()
+        db.session.delete(weblink)
+        db.session.commit()
+        self.assertIsNone(Weblink.query.filter_by(title='Weblink For Integrity Test').first())    
         
     def test_book_has_name_and_author(self):
         book_entity = Book('Book Title For Testing', 'Book A. Uthor', 2021)
@@ -68,4 +77,5 @@ class TestEntities(TestCase):
         self.assertEqual(all_podcasts[-1].title, 'Podcast For Integrity Test')
         self.assertNotEqual(all_podcasts[-1].name, 'Wrong name')
         self.assertEqual(all_podcasts[-1].description, 'Podcast Description')
+   
 

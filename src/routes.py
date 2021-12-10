@@ -14,7 +14,7 @@ def index():
     all_weblinks = weblink_service.get_weblinks()
     return render_template('index.html', weblinks=all_weblinks)
 
-@app.route('/weblinks', methods=['GET', 'POST', 'DELETE'])
+@app.route('/weblinks', methods=['GET', 'POST'])
 def weblinks():
     if request.method == 'GET':
         all_weblinks = weblink_service.get_weblinks()
@@ -24,10 +24,6 @@ def weblinks():
         weblink_url = request.form['url']
         weblink_service.add_weblink(weblink_title, weblink_url)
         return redirect('/weblinks')
-    if request.method == 'DELETE':
-        delete_weblink = request.form['weblink.id']
-        weblink_service.delete_weblink(delete_weblink)
-        return redirect('/weblinks')  
 
 @app.route('/podcasts', methods=['GET', 'POST'])
 def podcasts():
@@ -53,3 +49,10 @@ def books():
         book_year = request.form['year']
         book_service.add_book(book_title, book_author, book_year)
         return redirect('/books')
+
+@app.route('/delete', methods=['POST'])
+def delete():
+    deleted_weblink = request.form['weblink.id']
+    print(deleted_weblink)
+    weblink_service.delete_weblink(deleted_weblink)
+    return redirect('/weblinks')

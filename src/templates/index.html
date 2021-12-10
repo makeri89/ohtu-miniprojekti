@@ -13,14 +13,14 @@
 {% if url == '/weblinks' %}
   {% for weblink in weblinks %}
     <li>Title: {{ weblink.title }} <br> URL: <a href="{{ weblink.url }}">{{ weblink.url }}</a>
-        <form action="{{ url }}" method="DELETE"></form>
+        <form action="{{ url_for('delete') }}" method="POST">
             <input type="hidden" name="weblink.id" value="{{ weblink.id }}">
-            <input type="submit" name="{{ weblink.id }}" value="Delete" />
+            <input type="submit" value="Delete" />
         </form>
     </li>    
-  {% endfor %}
-
+  {% endfor %} 
 {% endif %}
+
 {% if url == '/books' %}
   {% for book in books %}
     <li>Author: {{ book.author }} <br> Title: {{ book.title}} ({{book.year}})</li>
