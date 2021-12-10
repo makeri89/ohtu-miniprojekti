@@ -18,12 +18,6 @@ All Weblinks Are Fetched From Database Then Displayed
     Weblink Should Be Displayed On Reload  weblink_name1
     Weblink Should Be Displayed On Reload  weblink_name2
 
-User Can Delete Weblink From Database
-    Add Weblink To Database  weblink_name1  http://example1.com
-    Weblink Should Be Displayed On Reload  weblink_name1
-    Delete Weblink From Database  weblink_name1
-    Weblink Should Not Be Displayed Anymore     
-
 User Can Add Book To Collection
     Go To Books Page
     Set Book Title  Robot Acceptance Test Book
@@ -108,3 +102,4 @@ Podcast Should Be Displayed On Reload
     [Arguments]  ${podcast_title}
     Go To Podcasts Page
     Page Should Contain  ${podcast_title}
+
