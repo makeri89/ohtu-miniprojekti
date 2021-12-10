@@ -12,3 +12,6 @@ class WeblinkService:
 
     def get_weblinks(self):
         return self._repository.find_all()
+
+    def delete_weblink(self, id):
+        self._repository.delete(id)    
