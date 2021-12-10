@@ -8,6 +8,9 @@
 ## Heroku
 [Heroku](https://winkvink.herokuapp.com/)
 
+## Release
+[Release](https://github.com/makeri89/ohtu-miniprojekti/releases)
+
 ## Definition of done
 
 * Yksikkötestit on toteutettu
