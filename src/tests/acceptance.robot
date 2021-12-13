@@ -46,6 +46,12 @@ All Podcasts Are Fetched From Database Then Displayed
     Podcast Should Be Displayed On Reload  Podcast Acceptance Testing    
     Podcast Should Be Displayed On Reload  Podcast Acceptance Testing   
 
+User Can Delete Podcast From Collection
+    Add Podcast To Database  Podcast To Be Deleted In Acceptance Test  Podcast Name  Description of the Podcast
+    Podcast Should Be Displayed On Reload  Podcast To Be Deleted In Acceptance Test
+    Delete Podcast
+    Podcast Should Not Be Displayed On Reload  Podcast To Be Deleted In Acceptance Test
+
 *** Keywords ***
 Set Book Author
     [Arguments]  ${book_author}
@@ -103,3 +109,10 @@ Podcast Should Be Displayed On Reload
     Go To Podcasts Page
     Page Should Contain  ${podcast_title}
 
+Podcast Should Not Be Displayed On Reload
+    [Arguments]  ${podcast_title}
+    Go To Podcasts Page
+    Page Should Not Contain  ${podcast_title}
+
+Delete Podcast
+    Click Element  xpath: ((//form))[last()]//input[@type='submit']
