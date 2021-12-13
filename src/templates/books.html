@@ -8,6 +8,8 @@
         <br> 
         <strong>Title:</strong> {{ book.title}} ({{ book.year }})
         <br>
+        <strong>Comment :</strong> {{ book.comment }} 
+        <br>
           <form action="{{ url_for('delete') }}" method="POST">
             <input type="hidden" name="book.id" value="{{ book.id }}" />
             <input type="submit" class="remove-button" value="Delete" />

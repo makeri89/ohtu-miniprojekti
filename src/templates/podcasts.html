@@ -10,6 +10,8 @@
       <br>
       <strong>Description:</strong> {{ podcast.description }}
       <br>
+      <strong>Comment:</strong> {{ podcast.comment }}
+      <br>
         <form action="{{ url_for('delete') }}" method="POST">
           <input type="hidden" name="podcast.id" value="{{ podcast.id }}" />
           <input type="submit" class="remove-button" value="Delete" />

@@ -6,8 +6,8 @@ class BookService:
     def __init__(self, repository=book_repository):
         self._repository = repository
 
-    def add_book(self, title, author, year):
-        book = Book(title, author, year)
+    def add_book(self, title, author, year, comment):
+        book = Book(title, author, year, comment)
         self._repository.add(book)
 
     def get_books(self):

@@ -29,19 +29,19 @@ class TestEntities(TestCase):
         db.drop_all()
 
     def test_weblink_has_name_and_url(self):
-        weblink_entity = Weblink('Newly Created Weblink', 'http://example.com')
+        weblink_entity = Weblink('Newly Created Weblink', 'http://example.com', 'WebLink Comment')
         self.assertEqual(weblink_entity.title, 'Newly Created Weblink')
         self.assertEqual(weblink_entity.url, 'http://example.com')
 
     def test_weblink_holds_integrity_in_and_out_of_database(self):
-        db.session.add(Weblink('Weblink For Integrity Test', 'http://example.com'))
+        db.session.add(Weblink('Weblink For Integrity Test', 'http://example.com', 'WebLink Comment'))
         db.session.commit()
         weblink = Weblink.query.filter_by(title='Weblink For Integrity Test').first()
         self.assertEqual(weblink.title, 'Weblink For Integrity Test')
         self.assertEqual(weblink.url, 'http://example.com')
 
     def test_delete_weblink_from_database(self):
-        weblink = Weblink('Weblink For Delete Test', 'http://example.com')
+        weblink = Weblink('Weblink For Delete Test', 'http://example.com', 'Weblink comment')
         db.session.add(weblink)
         db.session.commit()
         db.session.delete(weblink)
@@ -49,13 +49,13 @@ class TestEntities(TestCase):
         self.assertIsNone(Weblink.query.filter_by(title='Weblink For Delete Test').first())    
         
     def test_book_has_name_and_author(self):
-        book_entity = Book('Book Title For Testing', 'Book A. Uthor', 2021)
+        book_entity = Book('Book Title For Testing', 'Book A. Uthor', 2021, 'Book Comment')
         self.assertEqual(book_entity.title, 'Book Title For Testing')
         self.assertEqual(book_entity.author, 'Book A. Uthor')
         self.assertNotEqual(book_entity.year, 2020)
 
     def test_book_holds_integrity_in_and_out_of_database(self):
-        db.session.add(Book('Book For Integrity Test', 'Named Author', 2021))
+        db.session.add(Book('Book For Integrity Test', 'Named Author', 2021, 'Book Comment'))
         db.session.commit()
         book = Book.query.filter_by(title='Book For Integrity Test').first()
         self.assertEqual(book.title, 'Book For Integrity Test')
@@ -63,7 +63,7 @@ class TestEntities(TestCase):
         self.assertEqual(book.year, 2021)
 
     def test_delete_book_from_database(self):
-        book = Book('Book For Integrity Test', 'Named Author', 2021)
+        book = Book('Book For Integrity Test', 'Named Author', 2021, 'Book Comment')
         db.session.add(book)
         db.session.commit()
         db.session.delete(book)
@@ -71,13 +71,13 @@ class TestEntities(TestCase):
         self.assertIsNone(Book.query.filter_by(title='Book For Integrity Test').first())    
     
     def test_podcast_has_title_name_and_description(self):
-        podcast_entity = Podcast('Podcast Title', 'Podcast Name', 'Podcast Description')
+        podcast_entity = Podcast('Podcast Title', 'Podcast Name', 'Podcast Description', 'Podcast Comment')
         self.assertEqual(podcast_entity.title, 'Podcast Title')
         self.assertEqual(podcast_entity.name, 'Podcast Name')
         self.assertNotEqual(podcast_entity.description, 'Wrong Description')
 
     def test_podcast_holds_integrity_in_and_out_of_database(self):
-        db.session.add(Podcast('Podcast For Integrity Test', 'Podcast Name', 'Podcast Description'))
+        db.session.add(Podcast('Podcast For Integrity Test', 'Podcast Name', 'Podcast Description', 'Podcast Comment'))
         db.session.commit()
         podcast = Podcast.query.filter_by(title='Podcast For Integrity Test').first()
         self.assertEqual(podcast.title, 'Podcast For Integrity Test')
@@ -85,7 +85,7 @@ class TestEntities(TestCase):
         self.assertEqual(podcast.description, 'Podcast Description')
 
     def test_delete_podcast_from_database(self):
-        podcast = Podcast('Podcast Created For Delete Test', 'Podcast Author', 'Podcast To Be Deleted')
+        podcast = Podcast('Podcast Created For Delete Test', 'Podcast Author', 'Podcast To Be Deleted', 'Podcast Comment')
         db.session.add(podcast)
         self.assertIsNone(podcast.id)
         db.session.commit()

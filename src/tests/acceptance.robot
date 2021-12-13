@@ -9,17 +9,18 @@ User Can Add Weblink To Collection
     Go To Weblinks Page
     Set Weblink Title  test_title
     Set Weblink Url  http://example.com/
+    Set Comment  Weblink Comment Acceptance
     Submit Weblink
     Weblink Should Be Displayed On Reload  test_title
 
 All Weblinks Are Fetched From Database Then Displayed
-    Add Weblink To Database  weblink_name1  http://example1.com 
-    Add Weblink To Database  weblink_name2  http://example2.com 
+    Add Weblink To Database  weblink_name1  http://example1.com  Weblink Comment Acceptance 1
+    Add Weblink To Database  weblink_name2  http://example2.com  Weblink Comment Acceptance 2
     Weblink Should Be Displayed On Reload  weblink_name1
     Weblink Should Be Displayed On Reload  weblink_name2
 
 User Can Delete Weblink From Database
-    Add Weblink To Database  weblink_name1  http://example1.com
+    Add Weblink To Database  weblink_name1  http://example1.com  Weblink Comment Acceptance Delete
     Weblink Should Be Displayed On Reload  weblink_name1
     Delete Weblink
 
@@ -28,12 +29,13 @@ User Can Add Book To Collection
     Set Book Title  Robot Acceptance Test Book
     Set Book Author  Robot I. Acceptance
     Set Book Year  2021
+    Set Comment  Book Comment Acceptance
     Submit Book
     Book Should Be Displayed On Reload  Robot Acceptance Test Book
 
 All Books Are Fetched From Database Then Displayed
-    Add Book To Database  First Book Added  Firstly Authored  2020
-    Add Book To Database  Second Book Added  Secondly Authored  2021
+    Add Book To Database  First Book Added  Firstly Authored  2020  Book Comment 1
+    Add Book To Database  Second Book Added  Secondly Authored  2021  Book Comment 2
     Book Should Be Displayed On Reload  First Book Added
     Book Should Be Displayed On Reload  Second Book Added
 
@@ -42,22 +44,23 @@ User Can Add Podcast To Collection
     Set Podcast Title  Podcast Acceptance Testing 
     Set Podcast Name  Acceptance Testing Podcast
     Set Podcast Description  Podcast About Acceptance Testing
+    Set Comment  Podcast Comment Acceptance
     Submit Podcast
     Podcast Should Be Displayed On Reload  Podcast Acceptance Testing 
 
 User Can Delete Book From Database
-    Add Book To Database  First Book Added  Firstly Authored  2020
+    Add Book To Database  First Book Added  Firstly Authored  2020  Book Comment Delete
     Book Should Be Displayed On Reload  First Book Added
     Delete Book    
 
 All Podcasts Are Fetched From Database Then Displayed
-    Add Podcast To Database  First Podcast Added  Podcast Name 1  First Podcast Description
-    Add Podcast To Database  Second Podcast  Podcast Name 2  Second Podcast Description
+    Add Podcast To Database  First Podcast Added  Podcast Name 1  First Podcast Description  Podcast Comment 1
+    Add Podcast To Database  Second Podcast  Podcast Name 2  Second Podcast Description  Podcast Comment 2
     Podcast Should Be Displayed On Reload  Podcast Acceptance Testing    
     Podcast Should Be Displayed On Reload  Podcast Acceptance Testing   
 
 User Can Delete Podcast From Collection
-    Add Podcast To Database  Podcast To Be Deleted In Acceptance Test  Podcast Name  Description of the Podcast
+    Add Podcast To Database  Podcast To Be Deleted In Acceptance Test  Podcast Name  Description of the Podcast  Podcast Comment Delete
     Podcast Should Be Displayed On Reload  Podcast To Be Deleted In Acceptance Test
     Delete Podcast
     Podcast Should Not Be Displayed On Reload  Podcast To Be Deleted In Acceptance Test
@@ -94,6 +97,10 @@ Set Podcast Name
 Set Podcast Description
     [Arguments]  ${podcast_description}
     Input Text  id:description  ${podcast_description}
+
+Set Comment
+    [Arguments]  ${comment}
+    Input Text  id:comment  ${comment}
 
 Submit Book
     Submit New WinkVink

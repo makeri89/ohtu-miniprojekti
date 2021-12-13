@@ -6,8 +6,8 @@ class WeblinkService:
     def __init__(self, repository=weblink_repository):
         self._repository = repository
 
-    def add_weblink(self, title, url):
-        weblink = Weblink(title, url)
+    def add_weblink(self, title, url, comment):
+        weblink = Weblink(title, url, comment)
         self._repository.add(weblink)
 
     def get_weblinks(self):

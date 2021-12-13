@@ -6,8 +6,8 @@ class PodcastService:
     def __init__(self, repository=podcast_repository):
         self._repository = repository
 
-    def add_podcast(self, title, name, description):
-        podcast = Podcast(title, name, description)
+    def add_podcast(self, title, name, description, comment):
+        podcast = Podcast(title, name, description, comment)
         self._repository.add(podcast)
 
     def get_podcasts(self):

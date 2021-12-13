@@ -25,7 +25,9 @@ def weblinks():
     if request.method == 'POST':
         weblink_title = request.form['title']
         weblink_url = request.form['url']
-        weblink_service.add_weblink(weblink_title, weblink_url)
+        weblink_comment = request.form['comment']
+        weblink_service.add_weblink(weblink_title, weblink_url, \
+            weblink_comment)
         return redirect('/weblinks')
 
 @app.route('/podcasts', methods=['GET', 'POST'])
@@ -37,8 +39,9 @@ def podcasts():
         podcast_title = request.form['title']
         podcast_name = request.form['name']
         podcast_description = request.form['description']
+        podcast_comment = request.form['comment']
         podcast_service.add_podcast(podcast_title, podcast_name, \
-             podcast_description)
+             podcast_description, podcast_comment)
         return redirect('/podcasts')
 
 @app.route('/books', methods=['GET', 'POST'])
@@ -50,7 +53,8 @@ def books():
         book_title = request.form['title']
         book_author = request.form['author']
         book_year = request.form['year']
-        book_service.add_book(book_title, book_author, book_year)
+        book_comment = request.form['comment']
+        book_service.add_book(book_title, book_author, book_year, book_comment)
         return redirect('/books')
 
 @app.route("/ping", methods=['GET'])
@@ -70,4 +74,4 @@ def delete():
     if 'book.id' in request.form:
         deleted_book = request.form['book.id']
         book_service.delete_book(deleted_book)
-        return redirect('/books')   
+        return redirect('/books')

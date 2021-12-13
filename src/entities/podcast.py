@@ -5,11 +5,13 @@ class Podcast(db.Model):
     title = db.Column(db.String(500), nullable=False)
     name = db.Column(db.String(500), nullable=False)
     description = db.Column(db.String(500), nullable=False)
+    comment = db.Column(db.String(500), nullable=False)
 
-    def __init__(self, title=None, name=None, description=None ):
+    def __init__(self, title=None, name=None, description=None, comment=None):
         self.title = title
         self.name = name
         self.description = description
+        self.comment = comment
 
     def __repr__(self):
-        return f'{self.id}: {self.title} :: {self.name} :: {self.description}'
+        return f'{self.id}: {self.title} :: {self.name} :: {self.description} :: {self.comment}'
