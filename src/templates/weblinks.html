@@ -8,8 +8,8 @@
       <strong>URL:</strong> <a href="{{ weblink.url }}">{{ weblink.url }}</a>
       <br>
         <form action="{{ url_for('delete') }}" method="POST">
-          <input type="hidden" name="weblink.id" value="{{ weblink.id }}">
-          <input type="submit" value="Delete" />
+          <input type="hidden" name="weblink.id" value="{{ weblink.id }}" />
+          <input type="submit" class="remove-button" value="Delete" />
         </form>
     </li>    
     {% endfor %} 

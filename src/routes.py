@@ -59,7 +59,11 @@ def ping():
 
 @app.route('/delete', methods=['POST'])
 def delete():
-    deleted_weblink = request.form['weblink.id']
-    print(deleted_weblink)
-    weblink_service.delete_weblink(deleted_weblink)
-    return redirect('/weblinks')
+    if 'weblink.id' in request.form:
+        deleted_weblink = request.form['weblink.id']
+        weblink_service.delete_weblink(deleted_weblink)
+        return redirect('/weblinks')
+    if 'podcast.id' in request.form:
+        deleted_podcast = request.form['podcast.id']
+        podcast_service.delete_podcast(deleted_podcast)
+        return redirect('/podcasts')

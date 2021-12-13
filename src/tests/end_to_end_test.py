@@ -1,6 +1,7 @@
 #import required for flask/unittest integration
 from app import app
 
+from entities.podcast import Podcast
 import requests
 from unittest import TestCase
 
@@ -31,3 +32,18 @@ class TestEndToEnd(TestCase):
         self.assertFalse(results.text.__contains__('Podcast title'))
         self.assertTrue(results.text.__contains__('Database Podcast'))
         self.assertTrue(results.text.__contains__('Podcast about committing data into a database'))
+
+    def test_deleted_podcast_is_removed_from_database(self):
+        requests.post(f'http://localhost:{PORT}/podcasts', \
+            data={'title': 'End-to-end Podcast To Be Deleted', \
+                'name': 'Deleted Author', 'description': 'This Podcase Is Soon Gone'})
+        results = requests.get(f'http://localhost:{PORT}/podcasts')
+        self.assertTrue(results.text.__contains__('End-to-end Podcast To Be Deleted'))
+        #instead of parsing HTML for podcast.id
+        #below I simply fetch the latest podcast.id from db directly
+        podcast_id = Podcast.query.all()[-1].id
+        requests.post(f'http://localhost:{PORT}/delete', \
+            data={'podcast.id': str(podcast_id)})
+        results = requests.get(f'http://localhost:{PORT}/podcasts')
+        self.assertFalse(results.text.__contains__('End-to-end Podcast To Be Deleted'))
+        

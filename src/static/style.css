@@ -20,6 +20,10 @@ header a {
   color: black;
 }
 
+header h1 {
+  border-radius: 5px;
+}
+
 .vink-section {
   padding: 1em;
 }
@@ -56,6 +60,11 @@ header a {
   cursor: pointer;
 }
 
+.remove-button {
+  border: 1px black solid;
+  border-radius: 3px;
+  float: left;
+}
 .remove-button:hover {
   background-color: rgb(189, 20, 20);
   color: white;
@@ -70,4 +79,16 @@ header a {
   padding: 10px 50px;
   margin: 10px;
   border: 1px solid black;
+}
+
+.vink-input-form {
+  display: table;
+}
+
+.vink-input-row {
+  display: table-row;
+}
+
+.vink-input-cell {
+  display: table-cell;
 }

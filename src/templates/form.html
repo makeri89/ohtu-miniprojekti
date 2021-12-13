@@ -5,31 +5,40 @@
 <section id="vink-form">
   <h3>Add {{ url[1:] }}:</h3>
   
-  <form action="{{ url }}" method="POST" id="input-form">
-    <label for="title">Title</label>
-    {{ macros.input('title') }}
-    <br>
-    {% if url == '/weblinks' or url == '/' %}
-      <label for="url">Url</label>
-      {{ macros.input('url') }}
-      <br>
-    {% endif %}
-    {% if url == '/podcasts' %}
-      <label for="name">Name</label>
-      {{ macros.input('name') }}
-      <br>
-      <label for="description">Description</label>
-      {{ macros.input('description') }}
-      <br>
-    {% endif %}
-    {% if url == '/books' %}
-      <label for="author">Author</label>
-      {{ macros.input('author') }}
-      <br>
-      <label for="year">Publication year</label>
-      {{ macros.input('year') }}
-      <br>
-    {% endif %}
-    <input type="submit" name="submit" id="submit" value="Add" class="button">
+  <form action="{{ url }}" method="POST" class="vink-input-form" id="input-form">
+    <div class="vink-input-row">
+      <label for="title" class="vink-input-cell">Title</label>
+      {{ macros.input('title') }}
+    </div>
+      {% if url == '/weblinks' or url == '/' %}
+        <div class="vink-input-row">
+          <label for="url" class="vink-input-cell">Url</label>
+          {{ macros.input('url') }}
+        </div>
+      {% endif %}
+      {% if url == '/podcasts' %}
+        <div class="vink-input-row">
+          <label for="name" class="vink-input-cell">Name</label>
+          {{ macros.input('name') }}
+        </div>
+        <div class="vink-input-row">
+          <label for="description" class="vink-input-cell">Description</label>
+          {{ macros.input('description') }}
+        </div>
+      {% endif %}
+      {% if url == '/books' %}
+        <div class="vink-input-row">
+          <label for="author" class="vink-input-cell">Author</label>
+          {{ macros.input('author') }}
+        </div>
+        <div class="vink-input-row">
+          <label for="year" class="vink-input-cell">Publication year</label>
+          {{ macros.input('year') }}
+        </div>
+      {% endif %}
+      <div class="vink-input-row">
+        <input type="submit" name="submit" id="submit" value="Add" class="button">
+      </div>
+    </div>
   </form>
 </section>

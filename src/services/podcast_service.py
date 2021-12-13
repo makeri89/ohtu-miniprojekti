@@ -13,6 +13,5 @@ class PodcastService:
     def get_podcasts(self):
         return self._repository.find_all()
 
-    #placeholder before flask_testing is operational
-    def create_podcast_for_testing(self, title, name, description):
-        return Podcast(title, name, description)
+    def delete_podcast(self, id):
+        self._repository.delete(id)

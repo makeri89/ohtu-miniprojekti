@@ -12,4 +12,9 @@ class PodcastRepository:
         db.session.add(podcast)
         db.session.commit()
 
+    def delete(self, id):
+        deleted_podcast = Podcast.query.get(id)
+        db.session.delete(deleted_podcast)
+        db.session.commit()
+
 podcast_repository = PodcastRepository()
