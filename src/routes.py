@@ -67,3 +67,7 @@ def delete():
         deleted_podcast = request.form['podcast.id']
         podcast_service.delete_podcast(deleted_podcast)
         return redirect('/podcasts')
+    if 'book.id' in request.form:
+        deleted_book = request.form['book.id']
+        book_service.delete_book(deleted_book)
+        return redirect('/books')   

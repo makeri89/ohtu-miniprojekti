@@ -23,7 +23,6 @@ User Can Delete Weblink From Database
     Weblink Should Be Displayed On Reload  weblink_name1
     Delete Weblink
 
-
 User Can Add Book To Collection
     Go To Books Page
     Set Book Title  Robot Acceptance Test Book
@@ -45,6 +44,11 @@ User Can Add Podcast To Collection
     Set Podcast Description  Podcast About Acceptance Testing
     Submit Podcast
     Podcast Should Be Displayed On Reload  Podcast Acceptance Testing 
+
+User Can Delete Book From Database
+    Add Book To Database  First Book Added  Firstly Authored  2020
+    Book Should Be Displayed On Reload  First Book Added
+    Delete Book    
 
 All Podcasts Are Fetched From Database Then Displayed
     Add Podcast To Database  First Podcast Added  Podcast Name 1  First Podcast Description
@@ -105,6 +109,14 @@ Book Should Be Displayed On Reload
     Go To Books Page
     Page Should Contain  ${book_title}
 
+Book Should Not Be Displayed On Reload
+    [Arguments]  ${book_title}
+    Go To Books Page
+    Page Should Not Contain  ${book_title}
+
+Delete Book
+    Click Element  xpath: ((//form))[last()]//input[@type='submit']       
+
 Weblink Should Be Displayed On Reload
     [Arguments]  ${weblink_title}
     Go To Weblinks Page
@@ -123,10 +135,6 @@ Podcast Should Be Displayed On Reload
     Go To Podcasts Page
     Page Should Contain  ${podcast_title}
 
-<<<<<<< HEAD
-
-
-=======
 Podcast Should Not Be Displayed On Reload
     [Arguments]  ${podcast_title}
     Go To Podcasts Page
@@ -134,4 +142,3 @@ Podcast Should Not Be Displayed On Reload
 
 Delete Podcast
     Click Element  xpath: ((//form))[last()]//input[@type='submit']
->>>>>>> d5ccb3216c76bd03b58e5556d762b0a043e493ca

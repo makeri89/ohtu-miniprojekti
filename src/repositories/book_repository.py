@@ -12,4 +12,9 @@ class BookRepository:
         db.session.add(book)
         db.session.commit()
 
+    def delete(self, id):
+        deleted_book = Book.query.get(id)
+        db.session.delete(deleted_book)
+        db.session.commit()     
+
 book_repository = BookRepository()

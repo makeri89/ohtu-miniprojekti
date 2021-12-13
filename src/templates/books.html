@@ -6,7 +6,13 @@
       <li class='vink book'>
         <strong>Author:</strong> {{ book.author }}
         <br> 
-        <strong>Title:</strong> {{ book.title}} ({{ book.year }})</li>
+        <strong>Title:</strong> {{ book.title}} ({{ book.year }})
+        <br>
+          <form action="{{ url_for('delete') }}" method="POST">
+            <input type="hidden" name="book.id" value="{{ book.id }}" />
+            <input type="submit" class="remove-button" value="Delete" />
+          </form>
+      </li>
     {% endfor %}
   </ul>
 </section>

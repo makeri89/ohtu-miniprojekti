@@ -61,6 +61,14 @@ class TestEntities(TestCase):
         self.assertEqual(book.title, 'Book For Integrity Test')
         self.assertNotEqual(book.author, 'Someone Else')
         self.assertEqual(book.year, 2021)
+
+    def test_delete_book_from_database(self):
+        book = Book('Book For Integrity Test', 'Named Author', 2021)
+        db.session.add(book)
+        db.session.commit()
+        db.session.delete(book)
+        db.session.commit()
+        self.assertIsNone(Book.query.filter_by(title='Book For Integrity Test').first())    
     
     def test_podcast_has_title_name_and_description(self):
         podcast_entity = Podcast('Podcast Title', 'Podcast Name', 'Podcast Description')
