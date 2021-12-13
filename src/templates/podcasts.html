@@ -9,6 +9,11 @@
       <strong>Name:</strong> {{ podcast.name }}
       <br>
       <strong>Description:</strong> {{ podcast.description }}
+      <br>
+        <form action="{{ url_for('delete') }}" method="POST">
+          <input type="hidden" name="podcast.id" value="{{ podcast.id }}" />
+          <input type="submit" value="Delete" />
+        </form>
     </li>
     {% endfor %}
   </ul>
