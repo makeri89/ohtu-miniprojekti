@@ -14,4 +14,4 @@ class BookService:
         return self._repository.find_all()
 
     def delete_book(self, id):
-        self._repository.delete(id)      
+        self._repository.delete(id)

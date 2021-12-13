@@ -15,6 +15,6 @@ class BookRepository:
     def delete(self, id):
         deleted_book = Book.query.get(id)
         db.session.delete(deleted_book)
-        db.session.commit()     
+        db.session.commit()
 
 book_repository = BookRepository()
