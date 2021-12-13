@@ -12,7 +12,7 @@
       <br>
         <form action="{{ url_for('delete') }}" method="POST">
           <input type="hidden" name="podcast.id" value="{{ podcast.id }}" />
-          <input type="submit" value="Delete" />
+          <input type="submit" class="remove-button" value="Delete" />
         </form>
     </li>
     {% endfor %}
