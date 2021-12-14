@@ -10,6 +10,7 @@ ${BOOKS URL}  http://${SERVER}/books
 ${HOME URL}  http://${SERVER}
 ${WEBLINKS URL}  http://${SERVER}/weblinks
 ${PODCASTS URL}  http://${SERVER}/podcasts
+${COURSES_URL}  http://${SERVER}/courses
 
 *** Keywords ***
 Configure Browser
@@ -26,6 +27,9 @@ Go To Weblinks Page
 
 Go To Podcasts Page
     Go To  ${PODCASTS URL}
+
+Go To Courses Page
+    Go To  ${COURSES_URL}
 
 Home Page Should Be Open
     Title Should Be  Front page - WinkVink

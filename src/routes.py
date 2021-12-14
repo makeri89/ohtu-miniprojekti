@@ -90,6 +90,10 @@ def delete():
         deleted_book = request.form['book.id']
         book_service.delete_book(deleted_book)
         return redirect('/books')
+    if 'course.id' in request.form:
+        course_to_delete = request.form['course.id']
+        course_service.delete_course(course_to_delete)
+        return redirect('/courses')
 
 @app.route('/ping', methods=['GET'])
 def ping():

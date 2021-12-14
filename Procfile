@@ -1,1 +1,1 @@
-web: python3 src/index.py
+web: sh -c 'cd ./src && gunicorn index:app'

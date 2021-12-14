@@ -8,7 +8,9 @@ header {
   padding: 1.5em;
   display: flex;
   justify-content: center;
+  align-items: center;
   background-color: darkgreen;
+  flex-direction: column;
 }
 
 header h1 {
@@ -73,7 +75,7 @@ header h1 {
   background-color: white;
 }
 
-#vink-form {
+.form {
   padding: 10px 50px;
   margin: 10px;
   border: 1px solid black;
@@ -89,4 +91,16 @@ header h1 {
 
 .vink-input-cell {
   display: table-cell;
+}
+
+.navbar {
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.navbar li {
+  display: inline;
+  padding: 0 10px;
+  margin: 0 10px;
 }
