@@ -1,5 +1,4 @@
 from entities.weblink import Weblink
-from entities.course import Course
 
 from repositories.weblink_repository import weblink_repository
 from repositories.course_repository import course_repository
@@ -15,9 +14,9 @@ class WeblinkService:
 
     def get_weblinks(self):
         return self._repository.find_all()
-    
-    def get_weblink_by_id(self, id):
-        return self._repository.find_by_id(id)
 
-    def delete_weblink(self, id):
-        self._repository.delete(id)
+    def get_weblink_by_id(self, weblink_id):
+        return self._repository.find_by_id(weblink_id)
+
+    def delete_weblink(self, weblink_id):
+        self._repository.delete(weblink_id)

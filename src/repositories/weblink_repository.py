@@ -1,6 +1,5 @@
 from database import db
 from entities.weblink import Weblink
-from entities.course import Course
 
 class WeblinkRepository:
     def __init__(self):
@@ -8,17 +7,17 @@ class WeblinkRepository:
 
     def find_all(self):
         return Weblink.query.all()
-    
-    def find_by_id(self, id):
-        return Weblink.query.get(id)
+
+    def find_by_id(self, weblink_id):
+        return Weblink.query.get(weblink_id)
 
     def add(self, weblink, course):
         weblink.courses.append(course)
         db.session.add(weblink)
         db.session.commit()
 
-    def delete(self, id):
-        deleted_link = Weblink.query.get(id)
+    def delete(self, weblink_id):
+        deleted_link = Weblink.query.get(weblink_id)
         db.session.delete(deleted_link)
         db.session.commit()
 

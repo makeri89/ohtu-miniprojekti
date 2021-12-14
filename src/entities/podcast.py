@@ -13,7 +13,9 @@ class Podcast(db.Model):
         back_populates='podcasts'
     )
 
-    def __init__(self, title=None, name=None, description=None, comment=None, course=None):
+    def __init__(self, title=None, name=None,
+                 description=None, comment=None,
+                 course=None):
         self.title = title
         self.name = name
         self.description = description
@@ -21,4 +23,5 @@ class Podcast(db.Model):
         self.courses = []
 
     def __repr__(self):
-        return f'{self.id}: {self.title} :: {self.name} :: {self.description} :: {self.comment}'
+        return f'{self.id}: {self.title} :: {self.name} :: \
+            {self.description} :: {self.comment}'

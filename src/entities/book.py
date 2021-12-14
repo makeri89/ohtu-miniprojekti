@@ -21,4 +21,5 @@ class Book(db.Model):
         self.courses = []
 
     def __repr__(self):
-        return f'{self.id}: {self.author} :: {self.title} :: {self.year} :: {self.comment}'
+        return f'{self.id}: {self.author} :: {self.title} :: \
+            {self.year} :: {self.comment}'
