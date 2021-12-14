@@ -9,10 +9,16 @@
       <br>
       <strong>Comment:</strong> {{ weblink.comment }}
       <br>
-        <form action="{{ url_for('delete') }}" method="POST">
-          <input type="hidden" name="weblink.id" value="{{ weblink.id }}" />
-          <input type="submit" class="button remove-button" value="Delete" />
-        </form>
+      <strong>Related courses:</strong>
+      <ul>
+        {% for course in weblink.courses %}
+          <li>{{ course.name }}</li>
+        {% endfor %}
+      </ul>
+      <form action="{{ url_for('delete') }}" method="POST">
+        <input type="hidden" name="weblink.id" value="{{ weblink.id }}" />
+        <input type="submit" class="button remove-button" value="Delete" />
+      </form>
     </li>    
     {% endfor %} 
   </ul>

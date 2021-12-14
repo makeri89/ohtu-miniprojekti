@@ -12,7 +12,7 @@ class Weblink(db.Model):
         back_populates='weblinks'
     )
 
-    def __init__(self, title=None, url=None, comment=None):
+    def __init__(self, title=None, url=None, comment=None, course=None):
         self.title = title
         self.url = url
         self.comment = comment

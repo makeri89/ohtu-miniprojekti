@@ -1,5 +1,6 @@
 from database import db
 from entities.weblink import Weblink
+from entities.course import Course
 
 class WeblinkRepository:
     def __init__(self):
@@ -8,7 +9,8 @@ class WeblinkRepository:
     def find_all(self):
         return Weblink.query.all()
 
-    def add(self, weblink):
+    def add(self, weblink, course):
+        weblink.courses.append(course)
         db.session.add(weblink)
         db.session.commit()
 

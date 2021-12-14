@@ -5,15 +5,21 @@ from entities.podcast import Podcast
 from entities.book import Book
 from entities.weblink import Weblink
 import requests
-from unittest import TestCase
+from unittest import TestCase, result
 
 PORT = 5000
 
 class TestEndToEnd(TestCase):
+    def test_submitted_course_is_committed_to_database(self):
+        requests.post(f'http://localhost:{PORT}/courses', \
+            data={'name': 'Testing 101'})
+        result = requests.get(f'http://localhost:{PORT}/courses')
+        self.assertTrue(result.text.__contains__('Testing 101'))
+    
     def test_submitted_weblink_is_committed_to_database(self):
         requests.post(f'http://localhost:{PORT}/weblinks', \
             data={'title': 'End to End Testing for Weblinks', 'url': 'http://end.to', \
-                'comment': 'Weblink Comment'})
+                'comment': 'Weblink Comment', 'course': 'Testing 101'})
         results = requests.get(f'http://localhost:{PORT}/weblinks')
         self.assertTrue(results.text.__contains__('End to End Testing for Weblinks'))
         self.assertTrue(results.text.__contains__('Weblink Comment'))

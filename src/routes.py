@@ -23,20 +23,24 @@ def index():
 def weblinks():
     if request.method == 'GET':
         all_weblinks = weblink_service.get_weblinks()
-        return render_template('vinks.html', weblinks=all_weblinks)
+        print(all_weblinks[0].courses)
+        all_courses = course_service.get_courses()
+        return render_template('vinks.html', weblinks=all_weblinks, courses=all_courses)
     if request.method == 'POST':
         weblink_title = request.form['title']
         weblink_url = request.form['url']
         weblink_comment = request.form['comment']
+        weblink_course = request.form['course']
         weblink_service.add_weblink(weblink_title, weblink_url, \
-            weblink_comment)
+            weblink_comment, weblink_course)
         return redirect('/weblinks')
 
 @app.route('/podcasts', methods=['GET', 'POST'])
 def podcasts():
     if request.method == 'GET':
         all_podcasts = podcast_service.get_podcasts()
-        return render_template('vinks.html', podcasts=all_podcasts)
+        all_courses = course_service.get_courses()
+        return render_template('vinks.html', podcasts=all_podcasts, courses=all_courses)
     if request.method == 'POST':
         podcast_title = request.form['title']
         podcast_name = request.form['name']
@@ -50,7 +54,8 @@ def podcasts():
 def books():
     if request.method == 'GET':
         all_books = book_service.get_books()
-        return render_template('vinks.html', books=all_books)
+        all_courses = course_service.get_courses()
+        return render_template('vinks.html', books=all_books, courses=all_courses)
     if request.method == 'POST':
         book_title = request.form['title']
         book_author = request.form['author']
@@ -58,10 +63,16 @@ def books():
         book_comment = request.form['comment']
         book_service.add_book(book_title, book_author, book_year, book_comment)
         return redirect('/books')
-
-@app.route("/ping", methods=['GET'])
-def ping():
-    return "pong"
+    
+@app.route('/courses', methods=['GET', 'POST'])
+def courses():
+    if request.method == 'GET':
+        all_courses = course_service.get_courses()
+        return render_template('courses.html', courses=all_courses)
+    if request.method == 'POST':
+        course_name = request.form['course_name']
+        course_service.add_course(course_name)
+        return redirect('/courses')
 
 @app.route('/delete', methods=['POST'])
 def delete():
@@ -77,3 +88,7 @@ def delete():
         deleted_book = request.form['book.id']
         book_service.delete_book(deleted_book)
         return redirect('/books')
+
+@app.route('/ping', methods=['GET'])
+def ping():
+    return 'pong'

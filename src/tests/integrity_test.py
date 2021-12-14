@@ -1,15 +1,23 @@
+from werkzeug.wrappers import response
 from services.book_service import BookService
 from services.podcast_service import PodcastService
 from services.weblink_service import WeblinkService
+from services.course_service import CourseService
 from unittest import TestCase
 
 class TestIntegrity(TestCase):
     book_service = BookService()
     podcast_service = PodcastService()
     weblink_service = WeblinkService()
+    course_service = CourseService()
+    
+    def test_added_course_is_committed_to_database(self):
+        self.course_service.add_course('Testing 205')
+        response = self.course_service.get_courses()
+        self.assertEqual(response[-1].name, 'Testing 205')
 
     def test_added_weblink_is_committed_to_database(self):
-        self.weblink_service.add_weblink('Integrity Weblink', 'http://in.te', 'No comment')
+        self.weblink_service.add_weblink('Integrity Weblink', 'http://in.te', 'No comment', 'Testing 205')
         response = self.weblink_service.get_weblinks()
         self.assertEqual(response[-1].title, 'Integrity Weblink')
 
