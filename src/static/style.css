@@ -61,8 +61,6 @@ header h1 {
 }
 
 .remove-button {
-  border: 1px black solid;
-  border-radius: 3px;
   float: left;
 }
 .remove-button:hover {

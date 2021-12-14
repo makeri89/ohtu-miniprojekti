@@ -10,38 +10,38 @@
       <label for="title" class="vink-input-cell">Title</label>
       {{ macros.input('title') }}
     </div>
-      {% if url == '/weblinks' or url == '/' %}
-        <div class="vink-input-row">
-          <label for="url" class="vink-input-cell">Url</label>
-          {{ macros.input('url') }}
-        </div>
-      {% endif %}
-      {% if url == '/podcasts' %}
-        <div class="vink-input-row">
-          <label for="name" class="vink-input-cell">Name</label>
-          {{ macros.input('name') }}
-        </div>
-        <div class="vink-input-row">
-          <label for="description" class="vink-input-cell">Description</label>
-          {{ macros.input('description') }}
-        </div>
-      {% endif %}
-      {% if url == '/books' %}
-        <div class="vink-input-row">
-          <label for="author" class="vink-input-cell">Author</label>
-          {{ macros.input('author') }}
-        </div>
-        <div class="vink-input-row">
-          <label for="year" class="vink-input-cell">Publication year</label>
-          {{ macros.input('year') }}
-        </div>
-      {% endif %}
+    {% if url == '/weblinks' %}
       <div class="vink-input-row">
-        <label for="comment" class="vink-input-cell">Comment</label>
-        {{ macros.input('comment') }}
-      <div class="vink-input-row">
-        <input type="submit" name="submit" id="submit" value="Add" class="button">
+        <label for="url" class="vink-input-cell">Url</label>
+        {{ macros.input('url') }}
       </div>
+    {% endif %}
+    {% if url == '/podcasts' %}
+      <div class="vink-input-row">
+        <label for="name" class="vink-input-cell">Name</label>
+        {{ macros.input('name') }}
+      </div>
+      <div class="vink-input-row">
+        <label for="description" class="vink-input-cell">Description</label>
+        {{ macros.input('description') }}
+      </div>
+    {% endif %}
+    {% if url == '/books' %}
+      <div class="vink-input-row">
+        <label for="author" class="vink-input-cell">Author</label>
+        {{ macros.input('author') }}
+      </div>
+      <div class="vink-input-row">
+        <label for="year" class="vink-input-cell">Publication year</label>
+        {{ macros.input('year') }}
+      </div>
+    {% endif %}
+    <div class="vink-input-row">
+      <label for="comment" class="vink-input-cell">Comment</label>
+      {{ macros.input('comment') }}
+    <div class="vink-input-row">
+      <input type="submit" name="submit" id="submit" value="Add" class="button">
     </div>
   </form>
+  
 </section>

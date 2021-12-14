@@ -1,4 +1,5 @@
 from database import db
+from entities.course_to_podcast import courses_to_podcasts
 
 class Podcast(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -6,6 +7,11 @@ class Podcast(db.Model):
     name = db.Column(db.String(500), nullable=False)
     description = db.Column(db.String(500), nullable=False)
     comment = db.Column(db.String(500), nullable=False)
+    courses = db.relationship(
+        'Course',
+        secondary=courses_to_podcasts,
+        back_populates='podcasts'
+    )
 
     def __init__(self, title=None, name=None, description=None, comment=None):
         self.title = title

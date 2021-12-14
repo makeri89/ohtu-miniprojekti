@@ -1,4 +1,5 @@
 from database import db
+from entities.course_to_book import courses_to_books
 
 class Book(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -6,6 +7,11 @@ class Book(db.Model):
     author = db.Column(db.String(100), nullable=False)
     year = db.Column(db.Integer, nullable=True)
     comment = db.Column(db.String(500), nullable=False)
+    courses = db.relationship(
+        'Course',
+        secondary=courses_to_books,
+        back_populates='books'
+    )
 
     def __init__(self, title=None, author=None, year=None, comment=None):
         self.title = title

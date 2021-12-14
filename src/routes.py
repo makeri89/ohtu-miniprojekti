@@ -4,10 +4,12 @@ from app import app
 from services.weblink_service import WeblinkService
 from services.book_service import BookService
 from services.podcast_service import PodcastService
+from services.course_service import CourseService
 
 weblink_service = WeblinkService()
 book_service = BookService()
 podcast_service = PodcastService()
+course_service = CourseService()
 
 @app.route('/', methods=['GET'])
 def index():
