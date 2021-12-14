@@ -7,8 +7,12 @@ class BookRepository:
 
     def find_all(self):
         return Book.query.all()
+    
+    def find_by_id(self, id):
+        return Book.query.get(id)
 
-    def add(self, book):
+    def add(self, book, course):
+        book.courses.append(course)
         db.session.add(book)
         db.session.commit()
 

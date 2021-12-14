@@ -1,11 +1,13 @@
-from database import db
 from flask import Flask
 from flask_testing import TestCase
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.exc import InvalidRequestError
+
+from database import db
 from entities.weblink import Weblink
 from entities.book import Book
 from entities.podcast import Podcast
+from entities.course import Course
 
 class TestEntities(TestCase):
     def create_app(self):
@@ -98,3 +100,16 @@ class TestEntities(TestCase):
         podcast = Podcast('Podcast Not Committed To DB', 'Podcast Author', 'Podcast To Raise Expcetion')
         with self.assertRaises(InvalidRequestError):
             db.session.delete(podcast)
+            
+    def test_course_has_name(self):
+        course_entity = Course('Testing 101')
+        self.assertEqual(course_entity.name, 'Testing 101')
+        
+    def test_delete_course_from_database(self):
+        course = Course('Deleting 101')
+        db.session.add(course)
+        db.session.commit()
+        self.assertIsNotNone(course.id)
+        db.session.delete(course)
+        db.session.commit()
+        self.assertIsNone(Course.query.filter_by(name='Deleting 101').first())

@@ -23,7 +23,6 @@ def index():
 def weblinks():
     if request.method == 'GET':
         all_weblinks = weblink_service.get_weblinks()
-        print(all_weblinks[0].courses)
         all_courses = course_service.get_courses()
         return render_template('vinks.html', weblinks=all_weblinks, courses=all_courses)
     if request.method == 'POST':
@@ -46,8 +45,9 @@ def podcasts():
         podcast_name = request.form['name']
         podcast_description = request.form['description']
         podcast_comment = request.form['comment']
+        podcast_course = request.form['course']
         podcast_service.add_podcast(podcast_title, podcast_name, \
-             podcast_description, podcast_comment)
+             podcast_description, podcast_comment, podcast_course)
         return redirect('/podcasts')
 
 @app.route('/books', methods=['GET', 'POST'])
@@ -61,7 +61,9 @@ def books():
         book_author = request.form['author']
         book_year = request.form['year']
         book_comment = request.form['comment']
-        book_service.add_book(book_title, book_author, book_year, book_comment)
+        book_course = request.form['course']
+        book_service.add_book(book_title, book_author, book_year,
+                              book_comment, book_course)
         return redirect('/books')
     
 @app.route('/courses', methods=['GET', 'POST'])

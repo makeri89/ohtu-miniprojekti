@@ -7,3 +7,4 @@ selenium-screenshot*
 htmlcov/
 .pytest_cache
 .env
+database.db

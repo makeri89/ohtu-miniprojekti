@@ -27,7 +27,8 @@ class TestEndToEnd(TestCase):
     def test_submitted_book_is_committed_to_database(self):
         requests.post(f'http://localhost:{PORT}/books', \
             data={'title': 'Book Database Commitment', \
-                'author': 'Committed Author', 'year': 2021, 'comment': 'Book Comment'})
+                'author': 'Committed Author', 'year': 2021, 'comment': 'Book Comment',
+                'course': 'Testing 101'})
         results = requests.get(f'http://localhost:{PORT}/books')
         self.assertFalse(results.text.__contains__('Book Integrity Commitment'))
         self.assertTrue(results.text.__contains__('Committed Author'))
@@ -39,7 +40,7 @@ class TestEndToEnd(TestCase):
             data={'title': 'Commit Podcast to Dabase', \
                 'name': 'Database Podcast',  \
                 'description': 'Podcast about committing data into a database',  \
-                'comment': 'Podcast Comment'})
+                'comment': 'Podcast Comment', 'course': 'Testing 101'})
         results = requests.get(f'http://localhost:{PORT}/podcasts')
         self.assertFalse(results.text.__contains__('Podcast title'))
         self.assertTrue(results.text.__contains__('Database Podcast'))
@@ -50,7 +51,7 @@ class TestEndToEnd(TestCase):
         requests.post(f'http://localhost:{PORT}/podcasts', \
             data={'title': 'End-to-end Podcast To Be Deleted', \
                 'name': 'Deleted Author', 'description': 'This Podcase Is Soon Gone', \
-                'comment': 'Deleted Comment'})
+                'comment': 'Deleted Comment', 'course': 'Testing 101'})
         results = requests.get(f'http://localhost:{PORT}/podcasts')
         self.assertTrue(results.text.__contains__('End-to-end Podcast To Be Deleted'))
         self.assertTrue(results.text.__contains__('Deleted Comment'))
@@ -66,7 +67,8 @@ class TestEndToEnd(TestCase):
     def test_deleted_book_is_removed_from_database(self):
         requests.post(f'http://localhost:{PORT}/books', \
             data={'title': 'Book Database Commitment', \
-                'author': 'Committed Author', 'year': 2021, 'comment': 'Deleted Book Comment'})
+                'author': 'Committed Author', 'year': 2021,
+                'comment': 'Deleted Book Comment', 'course': 'Testing 101'})
         results = requests.get(f'http://localhost:{PORT}/books')
         #instead of parsing HTML for podcast.id
         #below I simply fetch the latest podcast.id from db directly

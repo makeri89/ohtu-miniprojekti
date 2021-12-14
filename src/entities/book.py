@@ -18,6 +18,7 @@ class Book(db.Model):
         self.author = author
         self.year = year
         self.comment = comment
+        self.courses = []
 
     def __repr__(self):
         return f'{self.id}: {self.author} :: {self.title} :: {self.year} :: {self.comment}'

@@ -8,6 +8,9 @@ class CourseRepository:
     def find_all(self):
         return Course.query.all()
     
+    def find_by_id(self, id):
+        return Course.query.get(id)
+    
     def find_by_course_name(self, course_name):
         return Course.query.filter_by(name=course_name).first()
     

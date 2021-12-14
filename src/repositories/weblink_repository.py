@@ -8,6 +8,9 @@ class WeblinkRepository:
 
     def find_all(self):
         return Weblink.query.all()
+    
+    def find_by_id(self, id):
+        return Weblink.query.get(id)
 
     def add(self, weblink, course):
         weblink.courses.append(course)

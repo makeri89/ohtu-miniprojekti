@@ -10,10 +10,16 @@
         <br>
         <strong>Comment :</strong> {{ book.comment }} 
         <br>
-          <form action="{{ url_for('delete') }}" method="POST">
-            <input type="hidden" name="book.id" value="{{ book.id }}" />
-            <input type="submit" class="button remove-button" value="Delete" />
-          </form>
+        <strong>Related courses:</strong>
+        <ul>
+          {% for course in book.courses %}
+            <li>{{ course.name }}</li>
+          {% endfor %}
+        </ul>
+        <form action="{{ url_for('delete') }}" method="POST">
+          <input type="hidden" name="book.id" value="{{ book.id }}" />
+          <input type="submit" class="button remove-button" value="Delete" />
+        </form>
       </li>
     {% endfor %}
   </ul>

@@ -16,6 +16,7 @@ class Weblink(db.Model):
         self.title = title
         self.url = url
         self.comment = comment
+        self.courses = []
 
     def __repr__(self):
         return f'{self.id}: {self.title} :: {self.url} :: {self.comment}'

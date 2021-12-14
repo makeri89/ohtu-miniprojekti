@@ -7,8 +7,12 @@ class PodcastRepository:
 
     def find_all(self):
         return Podcast.query.all()
+    
+    def find_by_id(self, id):
+        return Podcast.query.get(id)
 
-    def add(self, podcast):
+    def add(self, podcast, course):
+        podcast.courses.append(course)
         db.session.add(podcast)
         db.session.commit()
 
