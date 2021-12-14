@@ -11,6 +11,9 @@
 ## Release
 [Release](https://github.com/makeri89/ohtu-miniprojekti/releases)
 
+## Testikattavuusraportti
+[Coverage: Testikattavuusraportti](https://app.codecov.io/gh/makeri89/ohtu-miniprojekti)
+
 ## Definition of done
 
 * Yksikkötestit on toteutettu
