@@ -10,6 +10,10 @@ from unittest import TestCase, result
 PORT = 5000
 
 class TestEndToEnd(TestCase):
+    def setUp(self):
+        requests.post(f'http://localhost:{PORT}/courses', \
+            data={'course_name': 'Testing 101'})
+
     def test_submitted_course_is_committed_to_database(self):
         requests.post(f'http://localhost:{PORT}/courses', \
             data={'name': 'Testing 101'})
