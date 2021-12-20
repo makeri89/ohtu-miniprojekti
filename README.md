@@ -12,7 +12,7 @@
 [Release](https://github.com/makeri89/ohtu-miniprojekti/releases)
 
 ## Raportti
-[Raportti]()
+[Raportti](https://github.com/makeri89/ohtu-miniprojekti/blob/main/report.md)
 
 ## Testikattavuusraportti
 [Coverage: Testikattavuusraportti](https://app.codecov.io/gh/makeri89/ohtu-miniprojekti)
