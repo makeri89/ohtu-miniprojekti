@@ -1,4 +1,4 @@
-# Nora
+## Nora
 
 Sprintti 1 omalle kohdalle sattui suurimmaksi osaksi yksintyöskentelyn haasteet,
 mutta etätyöskentely sujui muuten hyvin ja kommunikoimme tiimin kanssa Discordin kautta.
